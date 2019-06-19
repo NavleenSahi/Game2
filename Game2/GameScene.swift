@@ -11,31 +11,54 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    let mario = SKSpriteNode(imageNamed: "mario")
+    
+    
+    var timeOfLastUpdate:TimeInterval = 0
+    var dt: TimeInterval = 0
     
     override func didMove(to view: SKView) {
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+        // THE GAME SCENE
+        // ---------------------
+        // set the physics properties of this world
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
     }
+    
+    func makePlatform(xPosition:CGFloat, yPosition:CGFloat) {
+        let platform = SKSpriteNode(imageNamed: "Ground")
+        
+        platform.position.x = xPosition / 2;
+        platform.position.y = yPosition / 2;
+        
+        
+        addChild(platform)
+    }
+    
+    
+    
+    func spawnmario() {
+        let mario = SKSpriteNode(imageNamed:"mario")
+        
+        // put sand at a random (x,y) position
+        let x = self.size.width / 2
+        let y = self.size.height - 100
+        
+        mario.position.x = x / 2
+        mario.position.y = y / 2
+        
+        // add physics
+        mario.physicsBody = SKPhysicsBody(circleOfRadius: mario.size.width / 2)
+        self.mario.physicsBody?.affectedByGravity = true
+        
+        addChild(mario)
+    }
+    
+   
+    
+    private var label : SKLabelNode?
+    private var spinnyNode : SKShapeNode?
     
     
     func touchDown(atPoint pos : CGPoint) {
@@ -62,7 +85,31 @@ class GameScene: SKScene {
         }
     }
     
+   
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first!
+        if (touch == nil) {
+            return
+        }
+        
+        let location = touch.location(in:self)
+        let node = self.atPoint(location)
+        
+        if (node.name == "nextLevelButton") {
+            let scene = SKScene(fileNamed:"Level2")
+            if (scene == nil) {
+                print("Error loading level")
+                return
+            }
+            else {
+                scene!.scaleMode = .aspectFill
+                view?.presentScene(scene!)
+            }
+        }
+        
+        
         if let label = self.label {
             label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
         }
@@ -71,19 +118,31 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        
+     
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        self.dt = currentTime - timeOfLastUpdate
+        if (self.dt >= 1.0) {
+            timeOfLastUpdate = currentTime
+            self.spawnmario()
+        }
+        
+        
+    }
+    
+    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
     
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
 }
