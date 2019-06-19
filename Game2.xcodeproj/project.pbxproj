@@ -15,6 +15,10 @@
 		9B4461A122BA8D3F007A86D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B44619F22BA8D3F007A86D5 /* Main.storyboard */; };
 		9B4461A322BA8D47007A86D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4461A222BA8D47007A86D5 /* Assets.xcassets */; };
 		9B4461A622BA8D47007A86D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4461A422BA8D47007A86D5 /* LaunchScreen.storyboard */; };
+		9B4461B022BA8EE3007A86D5 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B4461AF22BA8EE3007A86D5 /* Level2.sks */; };
+		9B4461B222BA8F07007A86D5 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B4461B122BA8F07007A86D5 /* Level3.sks */; };
+		9B4461B422BA8F2B007A86D5 /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4461B322BA8F2B007A86D5 /* Level2.swift */; };
+		9B4461B622BA8F51007A86D5 /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4461B522BA8F51007A86D5 /* Level3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		9B4461A222BA8D47007A86D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B4461A522BA8D47007A86D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B4461A722BA8D47007A86D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B4461AF22BA8EE3007A86D5 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
+		9B4461B122BA8F07007A86D5 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
+		9B4461B322BA8F2B007A86D5 /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
+		9B4461B522BA8F51007A86D5 /* Level3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,10 @@
 				9B4461A222BA8D47007A86D5 /* Assets.xcassets */,
 				9B4461A422BA8D47007A86D5 /* LaunchScreen.storyboard */,
 				9B4461A722BA8D47007A86D5 /* Info.plist */,
+				9B4461B322BA8F2B007A86D5 /* Level2.swift */,
+				9B4461AF22BA8EE3007A86D5 /* Level2.sks */,
+				9B4461B522BA8F51007A86D5 /* Level3.swift */,
+				9B4461B122BA8F07007A86D5 /* Level3.sks */,
 			);
 			path = Game2;
 			sourceTree = "<group>";
@@ -132,8 +144,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4461A122BA8D3F007A86D5 /* Main.storyboard in Resources */,
+				9B4461B022BA8EE3007A86D5 /* Level2.sks in Resources */,
 				9B44619822BA8D3F007A86D5 /* GameScene.sks in Resources */,
 				9B4461A322BA8D47007A86D5 /* Assets.xcassets in Resources */,
+				9B4461B222BA8F07007A86D5 /* Level3.sks in Resources */,
 				9B4461A622BA8D47007A86D5 /* LaunchScreen.storyboard in Resources */,
 				9B44619A22BA8D3F007A86D5 /* Actions.sks in Resources */,
 			);
@@ -146,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B4461B622BA8F51007A86D5 /* Level3.swift in Sources */,
 				9B44619C22BA8D3F007A86D5 /* GameScene.swift in Sources */,
+				9B4461B422BA8F2B007A86D5 /* Level2.swift in Sources */,
 				9B44619E22BA8D3F007A86D5 /* GameViewController.swift in Sources */,
 				9B44619622BA8D3F007A86D5 /* AppDelegate.swift in Sources */,
 			);
